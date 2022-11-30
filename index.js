@@ -1,18 +1,22 @@
 // divs
 const mainDiv = document.createElement("div");
 document.body.appendChild(mainDiv);
+const textOutput = document.createElement("div");
+mainDiv.appendChild(textOutput);
 const buttonDiv = document.createElement("div");
-document.body.appendChild(buttonDiv);
-
+mainDiv.appendChild(buttonDiv);
 
 //header & paragragrap
 const header = document.createElement("h1");
-mainDiv.appendChild(header);
+textOutput.appendChild(header);
 const counter = document.createElement("p");
+textOutput.appendChild(counter);
+
+
+
 
 
 //button elements
-buttonDiv.appendChild(counter);
 const decrease = document.createElement("button");
 buttonDiv.appendChild(decrease);
 const reset = document.createElement("button");
@@ -28,7 +32,6 @@ increase.innerHTML = "Increase";
 reset.innerHTML = "Reset";
 counter.innerHTML = "0";
 
-
 let count = 0;
 
 // attribute 
@@ -37,6 +40,8 @@ decrease.setAttribute("class", "button decrease");
 increase.setAttribute("class", "button increase");
 reset.setAttribute("class", "button reset");
 counter.setAttribute("id", "value")
+buttonDiv.setAttribute("class", "buttonDiv")
+header.setAttribute("id" ,"header")
 
 // all button function + count + color
 
@@ -50,34 +55,38 @@ allBtn.forEach(function (button) {
         if (calc.contains('decrease')) {
             count--;
             counter.textContent = count;
-            if (count < 0) {
-
-                counter.style.color = "red";
-            }
         }
 
         else if (calc.contains("increase")) {
 
             count++;
             counter.textContent = count;
-            if (count > 0) {
 
-                counter.style.color = "green";
-            }
         }
 
-        else if (calc.contains('reset')) {
+        if (calc.contains('reset')) {
 
             count = 0;
             counter.textContent = 0;
-            if (count = 0) {
 
-                counter.style.color = "blue";
-            }
 
         }
 
+        if (count < 0) {
 
+            value.style.color = "#ff7c7c";
+        }
+
+
+        if (count > 0) {
+
+            value.style.color = "#74ffbc";
+        }
+
+        if (count === 0) {
+
+            value.style.color = "black";
+        }
 
     })
 })
